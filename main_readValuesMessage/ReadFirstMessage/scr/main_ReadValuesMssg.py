@@ -210,6 +210,13 @@ def init_objects_FR():
         matrix_objects.append(object_FR)
     return matrix_objects
 
+def init_matrix_objects(size,class_type):
+    matrix_objects = []
+    for count_object in range(size):
+        object_type = class_type()
+        matrix_objects.append(object_type)
+    return matrix_objects
+        
 def obj_matrix_idx(ID,ADAS_matrix,idx_name_obj):
     idx = ADAS_matrix.index(ID)
     if idx>= 0 and idx<= 24:
@@ -248,9 +255,12 @@ def dicc_attr (name):
                                       MAIN 
 *============================================================================*/
 '''
-output_matrix=[]
-SRR_objects_FL = init_objects_FL()
-SRR_objects_FR = init_objects_FR()
+#-----------Definition of the memory structures--------------------------------
+SRR_objects_FL = init_matrix_objects(25,SRR_obj_FL)
+SRR_objects_FR = init_matrix_objects(25,SRR_obj_FR)
+#-----------------------------------
+
+
 idx_name_obj = idx_name_class()
 
 
