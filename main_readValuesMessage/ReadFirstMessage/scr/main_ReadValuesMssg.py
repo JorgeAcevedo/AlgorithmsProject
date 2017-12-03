@@ -4,59 +4,10 @@
                                     MACROS
 *============================================================================*/
 '''
-ID_ADAS_matrix = [#SRR_OBJ_FL 0 --> 24
-                  '400',
-                  '401',
-                  '402',
-                  '403',
-                  '404',
-                  '405',
-                  '406',
-                  '407',
-                  '408',
-                  '409',
-                  '40A',
-                  '40B',
-                  '40C',
-                  '40D',
-                  '40E',
-                  '40F',
-                  '410',
-                  '411',
-                  '412',
-                  '413',
-                  '414',
-                  '415',
-                  '416',
-                  '417',
-                  '418',
-                  #SRR_OBJ_FR 25 --> 49
-                  '440',
-                  '441',
-                  '442',
-                  '443',
-                  '444',
-                  '445',
-                  '446',
-                  '447',
-                  '448',
-                  '449',
-                  '44A',
-                  '44B',
-                  '44C',
-                  '44D',
-                  '44E',
-                  '44F',
-                  '450',
-                  '451',
-                  '452',
-                  '453',
-                  '454',
-                  '455',
-                  '456',
-                  '457',
-                  '458'
-                  ]
+import ID_list 
+import class_def
+
+ID_ADAS_matrix = ID_list.matrix
 
 ID                         = 2
 TIME_STAMP                 = 0
@@ -67,124 +18,6 @@ CAN_CHANNEL                = 1
                               CLASS DEFINITION
 *============================================================================*/
 '''
-class SRR_obj_FL:
-    
-    def dynProp_f(self,mssg):
-        mssg = mssg[::-1]
-        return mssg[0:3][::-1]
-    
-    def confidence_f(self,mssg):
-        mssg = mssg[::-1]
-        return mssg[4:6][::-1]
-    
-    def status_f(self,mssg):
-        mssg = mssg[::-1]
-        return mssg[6:8]
-    
-    def classObj_f(self,mssg):
-        mssg = mssg[::-1]
-        return mssg[8:11][::-1]
-    
-    def x_f(self,mssg):
-        mssg = mssg[::-1]
-        MSB = mssg[16:24]
-        MSB = MSB[::-1]
-        LSB = mssg[24:32]
-        LSB = LSB[::-1]
-        val = MSB + LSB
-       # x_val =(int(x_val,2)/2)*.004
-       #Tener en cuenta la division entre enteros
-        return val
-        
-    def y_f(self,mssg):
-        mssg = mssg[::-1]
-        MSB = mssg[32:40]
-        MSB = MSB[::-1]
-        LSB = mssg[40:48]
-        LSB = LSB[::-1]
-        val = MSB + LSB
-       # y_val =(int(y_val,2)/2)*.004
-        return val
-    
-    def ID_f(self,mssg):
-        mssg = mssg[::-1]
-        MSB = mssg[48:56]
-        MSB = MSB[::-1]
-        LSB = mssg[56:63]
-        LSB = LSB[::-1]
-        val = MSB + LSB
-        return val
-    
-    def __init__(self):
-        self.time_stamp         = 0
-        self.CAN_channel        = 0
-        self.dynProp            = 0
-        self.confidence         = 0
-        self.status             = 0
-        self.classObj           = 0
-        self.x                  = 0
-        self.y                  = 0
-        self.ID                 = 0
-        
-class SRR_obj_FR:
-    
-    def dynProp_f(self,mssg):
-        mssg = mssg[::-1]
-        return mssg[0:3][::-1]
-    
-    def confidence_f(self,mssg):
-        mssg = mssg[::-1]
-        return mssg[4:6][::-1]
-    
-    def status_f(self,mssg):
-        mssg = mssg[::-1]
-        return mssg[6:8]
-    
-    def classObj_f(self,mssg):
-        mssg = mssg[::-1]
-        return mssg[8:11][::-1]
-    
-    def x_f(self,mssg):
-        mssg = mssg[::-1]
-        MSB = mssg[16:24]
-        MSB = MSB[::-1]
-        LSB = mssg[24:32]
-        LSB = LSB[::-1]
-        val = MSB + LSB
-       # x_val =(int(x_val,2)/2)*.004
-       #Tener en cuenta la division entre enteros
-        return val
-        
-    def y_f(self,mssg):
-        mssg = mssg[::-1]
-        MSB = mssg[32:40]
-        MSB = MSB[::-1]
-        LSB = mssg[40:48]
-        LSB = LSB[::-1]
-        val = MSB + LSB
-       # y_val =(int(y_val,2)/2)*.004
-        return val
-    
-    def ID_f(self,mssg):
-        mssg = mssg[::-1]
-        MSB = mssg[48:56]
-        MSB = MSB[::-1]
-        LSB = mssg[56:63]
-        LSB = LSB[::-1]
-        val = MSB + LSB
-        return val
-    
-    def __init__(self):
-        self.time_stamp         = 0
-        self.CAN_channel        = 0
-        self.dynProp            = 0
-        self.confidence         = 0
-        self.status             = 0
-        self.classObj           = 0
-        self.x                  = 0
-        self.y                  = 0
-        self.ID                 = 0
-        
 class idx_name_class:
     def __init__(self):
         self.name = ''
@@ -196,19 +29,6 @@ class idx_name_class:
                               FUNCTION DECLARATION
 *============================================================================*/
 '''
-def init_objects_FL():
-    matrix_objects = []
-    for count_object in range(25):
-        object_FL = SRR_obj_FL()
-        matrix_objects.append(object_FL)
-    return matrix_objects
-
-def init_objects_FR():
-    matrix_objects = []
-    for count_object in range(25):
-        object_FR = SRR_obj_FR()
-        matrix_objects.append(object_FR)
-    return matrix_objects
 
 def init_matrix_objects(size,class_type):
     matrix_objects = []
@@ -256,8 +76,8 @@ def dicc_attr (name):
 *============================================================================*/
 '''
 #-----------Definition of the memory structures--------------------------------
-SRR_objects_FL = init_matrix_objects(25,SRR_obj_FL)
-SRR_objects_FR = init_matrix_objects(25,SRR_obj_FR)
+SRR_objects_FL = init_matrix_objects(25,class_def.SRR_obj_FL)
+SRR_objects_FR = init_matrix_objects(25,class_def.SRR_obj_FR)
 #-----------------------------------
 
 
