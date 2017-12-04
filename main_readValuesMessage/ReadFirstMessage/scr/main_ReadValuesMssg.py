@@ -39,13 +39,28 @@ def init_matrix_objects(size,class_type):
         
 def obj_matrix_idx(ID,ADAS_matrix,idx_name_obj):
     idx = ADAS_matrix.index(ID)
+    #SRR_OBJ_FL 0 --> 24
     if idx>= 0 and idx<= 24:
         idx_name_obj.idx = idx - 0
         idx_name_obj.name ="SRR_objects_FL"
         
+    #SRR_OBJ_FR 25 --> 49
     elif idx>= 25 and idx<= 49:
         idx_name_obj.idx = idx-25
         idx_name_obj.name ="SRR_objects_FR"
+        
+    #SRR_OBJ_RL 50--> 74
+    elif idx>= 50 and idx<= 74:
+        idx_name_obj.idx = idx-50
+        idx_name_obj.name ="SRR_objects_RL"
+        
+    #SRR_OBJ_RR 75 -> 99
+    elif idx>= 75 and idx<= 99:
+        idx_name_obj.idx = idx-75
+        idx_name_obj.name ="SRR_objects_RR"
+    
+    
+    
     #Add elif here........
 
     else:
@@ -65,6 +80,12 @@ def dicc_attr (name):
                                 "y","ID"],
             "SRR_objects_FR" : ["time_stamp","CAN_channel","dynProp",
                                 "confidence","status","classObj","x",
+                                "y","ID"],
+            "SRR_objects_RL" : ["time_stamp","CAN_channel","dynProp",
+                                "confidence","status","classObj","x",
+                                "y","ID"],
+            "SRR_objects_RR" : ["time_stamp","CAN_channel","dynProp",
+                                "confidence","status","classObj","x",
                                 "y","ID"]
             }[name]
 
@@ -78,6 +99,8 @@ def dicc_attr (name):
 #-----------Definition of the memory structures--------------------------------
 SRR_objects_FL = init_matrix_objects(25,class_def.SRR_obj_FL)
 SRR_objects_FR = init_matrix_objects(25,class_def.SRR_obj_FR)
+SRR_objects_RL = init_matrix_objects(25,class_def.SRR_obj_RL)
+SRR_objects_RR = init_matrix_objects(25,class_def.SRR_obj_RR)
 #-----------------------------------
 
 
