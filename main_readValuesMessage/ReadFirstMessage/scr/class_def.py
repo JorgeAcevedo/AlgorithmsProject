@@ -5,6 +5,7 @@
                               CLASS DEFINITION
 *============================================================================*/
 '''
+'''==============================SRR_obj===================================='''
 class SRR_obj_FL:
     
     def dynProp_f(self,mssg):
@@ -228,4 +229,120 @@ class SRR_obj_RR:
         self.x              = 0
         self.y              = 0
         self.ID             = 0
-        
+
+'''=============================SRR_obj_ext================================='''
+class SRR_obj_ext_FL:
+    
+    def vx_rel_f(self, mssg):
+        mssg = mssg[::-1]
+        MSB = mssg[0:8]
+        MSB = MSB[::-1]
+        LSB = mssg[8:16]
+        LSB = LSB[::-1]
+        return MSB + LSB
+    
+    def vy_rel_f(self,mssg):
+        mssg = mssg[::-1]
+        MSB = mssg[16:24]
+        MSB = MSB[::-1]
+        LSB = mssg[24:32]
+        LSB = LSB[::-1]
+        return MSB + LSB
+    
+    def RCS_f(self,mssg):
+        mssg = mssg[::-1]
+        return mssg[32:40][::-1]
+    
+    def __init__(self):
+        self.time_stamp     = 0
+        self.CAN_channel    = 0
+        self.vx_rel         = 0
+        self.vy_rel         = 0
+        self.RCS            = 0
+
+class SRR_obj_ext_FR:
+    
+    def vx_rel_f(self, mssg):
+        mssg = mssg[::-1]
+        MSB = mssg[0:8]
+        MSB = MSB[::-1]
+        LSB = mssg[8:16]
+        LSB = LSB[::-1]
+        return MSB + LSB
+    
+    def vy_rel_f(self,mssg):
+        mssg = mssg[::-1]
+        MSB = mssg[16:24]
+        MSB = MSB[::-1]
+        LSB = mssg[24:32]
+        LSB = LSB[::-1]
+        return MSB + LSB
+    
+    def RCS_f(self,mssg):
+        mssg = mssg[::-1]
+        return mssg[32:40][::-1]
+    
+    def __init__(self):
+        self.time_stamp     = 0
+        self.CAN_channel    = 0
+        self.vx_rel         = 0
+        self.vy_rel         = 0
+        self.RCS            = 0
+
+class SRR_obj_ext_RL:
+    
+    def vx_rel_f(self, mssg):
+        mssg = mssg[::-1]
+        MSB = mssg[0:8]
+        MSB = MSB[::-1]
+        LSB = mssg[8:16]
+        LSB = LSB[::-1]
+        return MSB + LSB
+    
+    def vy_rel_f(self,mssg):
+        mssg = mssg[::-1]
+        MSB = mssg[16:24]
+        MSB = MSB[::-1]
+        LSB = mssg[24:32]
+        LSB = LSB[::-1]
+        return MSB + LSB
+    
+    def RCS_f(self,mssg):
+        mssg = mssg[::-1]
+        return mssg[32:40][::-1]
+    
+    def __init__(self):
+        self.time_stamp     = 0
+        self.CAN_channel    = 0
+        self.vx_rel         = 0
+        self.vy_rel         = 0
+        self.RCS            = 0
+
+class SRR_obj_ext_RR:
+    
+    def vx_rel_f(self, mssg):
+        mssg = mssg[::-1]
+        MSB = mssg[0:8]
+        MSB = MSB[::-1]
+        LSB = mssg[8:16]
+        LSB = LSB[::-1]
+        return MSB + LSB
+    
+    def vy_rel_f(self,mssg):
+        mssg = mssg[::-1]
+        MSB = mssg[16:24]
+        MSB = MSB[::-1]
+        LSB = mssg[24:32]
+        LSB = LSB[::-1]
+        return MSB + LSB
+    
+    def RCS_f(self,mssg):
+        mssg = mssg[::-1]
+        return mssg[32:40][::-1]
+    
+    def __init__(self):
+        self.time_stamp     = 0
+        self.CAN_channel    = 0
+        self.vx_rel         = 0
+        self.vy_rel         = 0
+        self.RCS            = 0

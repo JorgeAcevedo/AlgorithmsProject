@@ -58,9 +58,27 @@ def obj_matrix_idx(ID,ADAS_matrix,idx_name_obj):
     elif idx>= 75 and idx<= 99:
         idx_name_obj.idx = idx-75
         idx_name_obj.name ="SRR_objects_RR"
+        
+    #SRR_obj_ext_FL
+    elif idx>= 100 and idx<= 124:
+        idx_name_obj.idx = idx-100
+        idx_name_obj.name ="SRR_objects_ext_FL"
     
-    
-    
+    #SRR_obj_ext_FR 125 -> 149
+    elif idx>= 125 and idx<= 149:
+        idx_name_obj.idx = idx-125
+        idx_name_obj.name ="SRR_objects_ext_FR"
+        
+    #SRR_obj_ext_RL 150 -> 174
+    elif idx>= 150 and idx<= 174:
+        idx_name_obj.idx = idx-150
+        idx_name_obj.name ="SRR_objects_ext_RL"
+        
+    #SRR_obj_ext_RR 175 -> 199
+    elif idx>= 175 and idx<= 199:
+        idx_name_obj.idx = idx-175
+        idx_name_obj.name ="SRR_objects_ext_RR"
+
     #Add elif here........
 
     else:
@@ -86,7 +104,15 @@ def dicc_attr (name):
                                 "y","ID"],
             "SRR_objects_RR" : ["time_stamp","CAN_channel","dynProp",
                                 "confidence","status","classObj","x",
-                                "y","ID"]
+                                "y","ID"],
+            "SRR_objects_ext_FL" : ["time_stamp","CAN_channel","vx_rel",
+                                "vy_rel","RCS"],
+            "SRR_objects_ext_FR" : ["time_stamp","CAN_channel","vx_rel",
+                                "vy_rel","RCS"],                    
+            "SRR_objects_ext_RL" : ["time_stamp","CAN_channel","vx_rel",
+                                "vy_rel","RCS"] ,
+            "SRR_objects_ext_RR" : ["time_stamp","CAN_channel","vx_rel",
+                                "vy_rel","RCS"]
             }[name]
 
 
@@ -97,10 +123,17 @@ def dicc_attr (name):
 *============================================================================*/
 '''
 #-----------Definition of the memory structures--------------------------------
+#SRR_objects
 SRR_objects_FL = init_matrix_objects(25,class_def.SRR_obj_FL)
 SRR_objects_FR = init_matrix_objects(25,class_def.SRR_obj_FR)
 SRR_objects_RL = init_matrix_objects(25,class_def.SRR_obj_RL)
 SRR_objects_RR = init_matrix_objects(25,class_def.SRR_obj_RR)
+
+#SRR_objects_ext
+SRR_objects_ext_FL = init_matrix_objects(25,class_def.SRR_obj_ext_FL)
+SRR_objects_ext_FR = init_matrix_objects(25,class_def.SRR_obj_ext_FR)
+SRR_objects_ext_RL = init_matrix_objects(25,class_def.SRR_obj_ext_RL)
+SRR_objects_ext_RR = init_matrix_objects(25,class_def.SRR_obj_ext_RR)
 #-----------------------------------
 
 
